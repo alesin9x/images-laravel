@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\ParameterController;
+
+Route::get('/parameters', [ParameterController::class, 'index']);
+Route::post('/parameters/{id}/upload-images', [ParameterController::class, 'uploadImages'])->name('parameters.upload-images');
+Route::delete('/parameters/image/{id}', [ParameterController::class, 'deleteImage'])->name('parameters.delete-image');
